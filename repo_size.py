@@ -40,7 +40,7 @@ def get_artifactory_storage_info() -> list[dict[str, str]]:
     return storage_info
 
 
-def save_to_db(repo_list: list[dict[str, str]]=None) -> None:
+def save_to_artifact_storage_db(repo_list: list[dict[str, str]]=None) -> None:
     engine = create_engine(f"postgresql://{CONFIG.POSTGRESQL_URI}", connect_args={'connect_timeout': 20})
     # with Session(engine) as session:
     #     print(session.query(ArtifactStorage).all())
@@ -67,4 +67,4 @@ def save_to_db(repo_list: list[dict[str, str]]=None) -> None:
 if __name__ == "__main__":
     CONFIG = load()
     # get_artifactory_storage_info()
-    save_to_db()
+    save_to_artifact_storage_db()
